@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Courses from './components/courses/Courses'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
@@ -17,7 +19,7 @@ function App() {
 
      </div>
     
-      
+        
     </>
   )
 }
