@@ -1,20 +1,28 @@
 import React from "react";
+import { BsCurrencyDollar } from "react-icons/bs";
 
-const course = () => {
+const course = ({ course }) => {
+ const { name, description, photo, price, credit} = course;
+
+
   return (
     <div>
       <div className="card w-full bg-base-100 shadow-xl">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
+          <img className="p-4"
+            src={photo}
+            alt="product_img"
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{name}!</h2>
+          <p>{description}</p>
+          <div>
+            <p><BsCurrencyDollar />Price: {price}</p>
+            <p></p>
+          </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary text-white btn-block">Select</button>
           </div>
         </div>
       </div>
