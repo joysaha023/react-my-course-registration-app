@@ -1,7 +1,7 @@
 import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 
-const course = ({ course }) => {
+const course = ({ course, handleCourseSelect }) => {
  const { name, description, photo, price, credit} = course;
 
 
@@ -54,7 +54,7 @@ const course = ({ course }) => {
                     </p>
                 </div>
           <div className="card-actions justify-end">
-          <button className="btn btn-primary text-white btn-block">Select</button>
+          <button onClick={() => handleCourseSelect(course)} className="btn btn-primary text-white btn-block">Select</button>
           </div>
         </div>
       </div>
