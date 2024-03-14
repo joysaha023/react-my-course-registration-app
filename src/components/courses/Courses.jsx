@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Course from "../course/Course";
 import Cart from "../cart/Cart";
 
-const courses = ({handleCourseSelect}) => {
+const courses = () => {
     const [courseData, setCourseData] = useState([])
+    const [carts, setCarts] = useState([])
 
     useEffect(() =>{
         fetch('course.json')
@@ -11,6 +12,10 @@ const courses = ({handleCourseSelect}) => {
         .then(data => setCourseData(data))
     }, [])
 
+    const handleCourseSelect = (course) => {
+        // console.log(course)
+        setCarts(c=>[...c, course])
+      }
 
 
   return (
@@ -26,7 +31,7 @@ const courses = ({handleCourseSelect}) => {
            
         </div>
         <div className="basis-[20%]">
-            <Cart></Cart>
+            <Cart carts={carts}></Cart>
         </div>
       </div>
     </div>

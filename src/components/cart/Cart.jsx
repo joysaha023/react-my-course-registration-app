@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Cart = () => {
+const Cart = ({carts}) => {
     return (
         <div className='bg-gray-100'>
-            <h1 className=''>credit Hour Ranking: 7 hr</h1>
+            <h1 className=''>credit Hour Ranking: {carts.length} hr</h1>
             <div className='divider'></div>
             <div>Course Name</div>
             <div className='divider'></div>
