@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Course from "../course/Course";
 import Cart from "../cart/Cart";
 
+export const totalCredits = 15;
+
 const courses = () => {
     const [courseData, setCourseData] = useState([])
     const [carts, setCarts] = useState([])
@@ -14,7 +16,14 @@ const courses = () => {
 
     const handleCourseSelect = (course) => {
         // console.log(course)
-        setCarts(c=>[...c, course])
+        const credits = carts.reduce((p, c) => p + c.credit, 0)
+
+        if(credits + course.credit > totalCredits)
+            alert(`only ${totalCredits} credits allowed`);
+
+        const alreadyExists = carts.find(c =>c.id == course.id);
+        if(!alreadyExists) setCarts((c) => [...c, course]);
+        // setCarts(c=>[...c, course])
       }
 
 
@@ -22,7 +31,7 @@ const courses = () => {
     <div>
       
       <div className="flex flex-col lg:flex-row justify-center gap-4">
-        <div className="basis-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="basis-[75%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {
                courseData.map((course) => (
                 <Course key={course.id} handleCourseSelect={handleCourseSelect} course={course}></Course>
@@ -30,7 +39,7 @@ const courses = () => {
             }
            
         </div>
-        <div className="basis-[20%]">
+        <div className="basis-[25%]">
             <Cart carts={carts}></Cart>
         </div>
       </div>
